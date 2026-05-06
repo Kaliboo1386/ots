@@ -157,22 +157,32 @@ void ServicePort::handle(Acceptor_ptr acceptor, boost::asio::ip::tcp::socket* so
 			remoteIp = htonl(ip.address().to_v4().to_ulong());
 
 		Connection_ptr connection;
-		if(remoteIp && ConnectionManager::getInstance()->acceptConnection(remoteIp) &&
-			(connection = ConnectionManager::getInstance()->createConnection(
-			socket, m_io_service, shared_from_this())))
+		if(remoteIp && ConnectionManager::getInstance()->acceptConnection(remoteIp))
 		{
-			if(m_services.front()->isSingleSocket())
-				connection->handle(m_services.front()->makeProtocol(connection));
+			if((connection = ConnectionManager::getInstance()->createConnection(
+				socket, m_io_service, shared_from_this())))
+			{
+				if(m_services.front()->isSingleSocket())
+					connection->handle(m_services.front()->makeProtocol(connection));
+				else
+					connection->accept();
+			}
 			else
-				connection->accept();
+			{
+				std::cout << "[DEBUG] Failed to create connection object!" << std::endl;
+			}
 		}
-		else if(socket->is_open())
+		else
 		{
-			boost::system::error_code error;
-			socket->shutdown(boost::asio::ip::tcp::socket::shutdown_both, error);
+			std::cout << "[DEBUG] Connection REJECTED by ConnectionManager (anti-flood?). IP: " << remoteIp << std::endl;
+			if(socket->is_open())
+			{
+				boost::system::error_code error;
+				socket->shutdown(boost::asio::ip::tcp::socket::shutdown_both, error);
 
-			socket->close(error);
-			delete socket;
+				socket->close(error);
+				delete socket;
+			}
 		}
 
 #ifdef __DEBUG_NET_DETAIL__

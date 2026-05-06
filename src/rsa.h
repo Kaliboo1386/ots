@@ -29,6 +29,7 @@ class RSA
 
 		void initialize(const char* p, const char* q, const char* d);
 		bool initialize(const std::string& file);
+		void loadPEM(const std::string& filename);
 
 		void decrypt(char* msg);
 

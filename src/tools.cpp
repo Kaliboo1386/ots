@@ -130,9 +130,17 @@ void _encrypt(std::string& str, bool upperCase)
 	}
 }
 
-bool encryptTest(std::string plain, std::string& hash)
+bool encryptTest(std::string plain, std::string& hash, std::string salt)
 {
 	std::transform(hash.begin(), hash.end(), hash.begin(), upchar);
+	if(!salt.empty())
+	{
+		std::string salted = salt + plain;
+		_encrypt(salted, true);
+		if(salted == hash)
+			return true;
+	}
+
 	_encrypt(plain, true);
 	return plain == hash;
 }

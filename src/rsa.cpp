@@ -54,6 +54,18 @@ bool RSA::initialize(const std::string& file)
 	return true;
 }
 
+extern bool loadRSAFromPEM(const std::string& filename, std::string& p, std::string& q, std::string& d);
+
+void RSA::loadPEM(const std::string& filename)
+{
+	std::string p, q, d;
+	if(!loadRSAFromPEM(filename, p, q, d))
+		throw std::runtime_error("Could not load RSA key from PEM file: " + filename);
+
+	std::clog << "> RSA key loaded successfully from " << filename << std::endl;
+	initialize(p.c_str(), q.c_str(), d.c_str());
+}
+
 void RSA::initialize(const char* p, const char* q, const char* d)
 {
 	boost::recursive_mutex::scoped_lock lockClass(rsaLock);

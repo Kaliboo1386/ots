@@ -47,7 +47,7 @@ Account IOLoginData::loadAccount(uint32_t accountId, bool preLoad/* = false*/)
 	Database* db = Database::getInstance();
 	DBQuery query;
 
-	query << "SELECT `name`, `password`, `premdays`, `lastday`, `key`, `warnings` FROM `accounts` WHERE `id` = " << accountId << " LIMIT 1";
+	query << "SELECT `name`, `password`, `premdays`, `lastday`, `key`, `warnings`, `salt` FROM `accounts` WHERE `id` = " << accountId << " LIMIT 1";
 	DBResult* result;
 	if(!(result = db->storeQuery(query.str())))
 		return account;
@@ -59,6 +59,7 @@ Account IOLoginData::loadAccount(uint32_t accountId, bool preLoad/* = false*/)
 	account.lastDay = result->getDataInt("lastday");
 	account.recoveryKey = result->getDataString("key");
 	account.warnings = result->getDataInt("warnings");
+	account.salt = result->getDataString("salt");
 
 	query.str("");
 	result->free();
