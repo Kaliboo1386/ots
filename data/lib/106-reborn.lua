@@ -238,12 +238,4 @@ function REBORN_SYSTEM:addRewards(cid, t)
    doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, str)
    doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, str)
 end
-
-function checkReborn(cid, minReborn)
-    if getPlayerReborn(cid) < minReborn then
-        doPlayerSendCancel(cid, "Musisz miec co najmniej " .. minReborn .. " rebornow, aby tego uzywac.")
-        return false
-    end
-    return true
-end
 	 

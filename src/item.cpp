@@ -788,7 +788,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance, const
 		if(!it.runeSpellName.empty())
 			s << "(\"" << it.runeSpellName << "\")";
 
-		if(it.runeLevel > 0 || it.runeMagLevel > 0 || (it.vocationString != "" && it.wieldInfo == 0))
+		if(it.runeLevel > 0 || it.runeMagLevel > 0 || it.minReqReborn > 0 || (it.vocationString != "" && it.wieldInfo == 0))
 		{
 			s << "." << std::endl << "It can only be used";
 			if(it.vocationString != "" && it.wieldInfo == 0)
@@ -803,8 +803,14 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance, const
 
 			if(it.runeMagLevel > 0)
 			{
-				begin = false;
 				s << " " << (begin ? "with" : "and") << " magic level " << it.runeMagLevel;
+				begin = false;
+			}
+
+			if(it.minReqReborn > 0)
+			{
+				s << " " << (begin ? "with" : "and") << " " << it.minReqReborn << " reborn" << (it.minReqReborn != 1 ? "s" : "");
+				begin = false;
 			}
 
 			if(!begin)
@@ -1475,6 +1481,16 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance, const
 				s << " of";
 
 			s << " magic level " << (int32_t)it.minReqMagicLevel << " or higher";
+		}
+
+		if(it.wieldInfo & WIELDINFO_REBORN)
+		{
+			if(it.wieldInfo & (WIELDINFO_LEVEL | WIELDINFO_MAGLV))
+				s << " and";
+			else
+				s << " of";
+
+			s << " " << (int32_t)it.minReqReborn << " reborn" << (it.minReqReborn != 1 ? "s" : "") << " or higher";
 		}
 
 		s << ".";

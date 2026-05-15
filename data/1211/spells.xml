@@ -240,7 +240,7 @@
 	</instant>
 	
 	<!-- 2 reb -->
-	<instant name="Love Epic" words="exevo love epic" lvl="402000" maglv="100" mana="2000" soul="0" exhaustion="1500" prem="1" enabled="1" script="mag/love epic.lua">
+	<instant name="Love Epic" words="exevo love epic" reborn="2" lvl="402000" maglv="100" mana="2000" soul="0" exhaustion="1500" prem="1" enabled="1" script="mag/love epic.lua">
 		<vocation name="Epic Elder Druid"/>
 		<vocation name="Epic Master Sorcerer"/>
 		<vocation name="Awesome Druid" showInDescription="0"/>

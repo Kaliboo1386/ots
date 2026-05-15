@@ -125,6 +125,7 @@ class Spell : public BaseSpell
 		int32_t getSoulCost() const {return soul;}
 		uint32_t getLevel() const {return level;}
 		int32_t getMagicLevel() const {return magLevel;}
+		int32_t getReborn() const {return reborn;}
 		int32_t getMana() const {return mana;}
 		int32_t getManaPercent() const {return manaPercent;}
 		uint32_t getExhaustion() const {return exhaustion;}
@@ -146,6 +147,7 @@ class Spell : public BaseSpell
 
 		int32_t level;
 		int32_t magLevel;
+		int32_t reborn;
 		bool premium;
 		bool learnable;
 		bool enabled;

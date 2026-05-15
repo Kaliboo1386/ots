@@ -455,6 +455,7 @@ Spell::Spell()
 {
 	level = 0;
 	magLevel = 0;
+	reborn = 0;
 	mana = 0;
 	manaPercent = 0;
 	soul = 0;
@@ -506,6 +507,9 @@ bool Spell::configureSpell(xmlNodePtr p)
 
 	if(readXMLInteger(p, "maglv", intValue) || readXMLInteger(p, "magiclevel", intValue))
 	 	magLevel = intValue;
+
+	if(readXMLInteger(p, "reborn", intValue))
+		reborn = intValue;
 
 	if(readXMLInteger(p, "mana", intValue))
 	 	mana = intValue;
@@ -624,6 +628,15 @@ bool Spell::checkSpell(Player* player) const
 	if((int32_t)player->getMagicLevel() < magLevel)
 	{
 		player->sendCancelMessage(RET_NOTENOUGHMAGICLEVEL);
+		g_game.addMagicEffect(player->getPosition(), MAGIC_EFFECT_POFF);
+		return false;
+	}
+
+	if((int32_t)player->getReborn() < reborn)
+	{
+		char buffer[100];
+		sprintf(buffer, "You need at least %d reborns to use this spell.", reborn);
+		player->sendCancel(buffer);
 		g_game.addMagicEffect(player->getPosition(), MAGIC_EFFECT_POFF);
 		return false;
 	}

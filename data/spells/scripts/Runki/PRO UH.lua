@@ -21,10 +21,5 @@ end
 setCombatCallback(combat, CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 
 function onCastSpell(cid, var)
-	if not checkReborn(cid, 2) then
-		return false
-	end
-	
 	return doCombat(cid, combat, var)
-	
 end

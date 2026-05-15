@@ -141,6 +141,7 @@ class MoveEvent : public Event
 		uint32_t getSlot() const {return slot;}
 		int32_t getReqLevel() const {return reqLevel;}
 		int32_t getReqMagLv() const {return reqMagLevel;}
+		int32_t getReqReborn() const {return reqReborn;}
 		bool isPremium() const {return premium;}
 
 		const VocationMap& getVocEquipMap() const {return vocEquipMap;}
@@ -157,7 +158,7 @@ class MoveEvent : public Event
 		EquipFunction* equipFunction;
 
 		uint32_t wieldInfo, slot;
-		int32_t reqLevel, reqMagLevel;
+		int32_t reqLevel, reqMagLevel, reqReborn;
 		bool premium;
 
 		VocationMap vocEquipMap;

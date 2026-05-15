@@ -225,6 +225,7 @@ bool MoveEvents::registerEvent(Event* event, xmlNodePtr p, bool override)
 				it.wieldInfo = moveEvent->getWieldInfo();
 				it.minReqLevel = moveEvent->getReqLevel();
 				it.minReqMagicLevel = moveEvent->getReqMagLv();
+				it.minReqReborn = moveEvent->getReqReborn();
 				it.vocationString = moveEvent->getVocationString();
 			}
 
@@ -239,6 +240,7 @@ bool MoveEvents::registerEvent(Event* event, xmlNodePtr p, bool override)
 						tit.wieldInfo = moveEvent->getWieldInfo();
 						tit.minReqLevel = moveEvent->getReqLevel();
 						tit.minReqMagicLevel = moveEvent->getReqMagLv();
+						tit.minReqReborn = moveEvent->getReqReborn();
 						tit.vocationString = moveEvent->getVocationString();
 					}
 				}
@@ -262,6 +264,7 @@ bool MoveEvents::registerEvent(Event* event, xmlNodePtr p, bool override)
 					it.wieldInfo = moveEvent->getWieldInfo();
 					it.minReqLevel = moveEvent->getReqLevel();
 					it.minReqMagicLevel = moveEvent->getReqMagLv();
+					it.minReqReborn = moveEvent->getReqReborn();
 					it.vocationString = moveEvent->getVocationString();
 				}
 
@@ -274,6 +277,7 @@ bool MoveEvents::registerEvent(Event* event, xmlNodePtr p, bool override)
 						tit.wieldInfo = moveEvent->getWieldInfo();
 						tit.minReqLevel = moveEvent->getReqLevel();
 						tit.minReqMagicLevel = moveEvent->getReqMagLv();
+						tit.minReqReborn = moveEvent->getReqReborn();
 						tit.vocationString = moveEvent->getVocationString();
 					}
 				}
@@ -712,6 +716,7 @@ Event(_interface)
 	wieldInfo = 0;
 	reqLevel = 0;
 	reqMagLevel = 0;
+	reqReborn = 0;
 	premium = false;
 }
 
@@ -728,6 +733,7 @@ Event(copy)
 		wieldInfo = copy->wieldInfo;
 		reqLevel = copy->reqLevel;
 		reqMagLevel = copy->reqMagLevel;
+		reqReborn = copy->reqReborn;
 		vocationString = copy->vocationString;
 		premium = copy->premium;
 		vocEquipMap = copy->vocEquipMap;
@@ -868,6 +874,13 @@ bool MoveEvent::configureEvent(xmlNodePtr p)
 					wieldInfo |= WIELDINFO_MAGLV;
 			}
 
+			if(readXMLInteger(p, "reborn", intValue))
+			{
+				reqReborn = intValue;
+				if(reqReborn > 0)
+					wieldInfo |= WIELDINFO_REBORN;
+			}
+
 			if(readXMLString(p, "prem", strValue) || readXMLString(p, "premium", strValue))
 			{
 				premium = booleanString(strValue);
@@ -972,7 +985,7 @@ bool MoveEvent::EquipItem(MoveEvent* moveEvent, Player* player, Item* item, slot
 
 	if(!player->hasFlag(PlayerFlag_IgnoreEquipCheck) && moveEvent->getWieldInfo() != 0)
 	{
-		if(player->getLevel() < (uint32_t)moveEvent->getReqLevel() || player->getMagicLevel() < (uint32_t)moveEvent->getReqMagLv())
+		if(player->getLevel() < (uint32_t)moveEvent->getReqLevel() || player->getMagicLevel() < (uint32_t)moveEvent->getReqMagLv() || player->getReborn() < (uint32_t)moveEvent->getReqReborn())
 			return false;
 
 		if(moveEvent->isPremium() && !player->isPremium())

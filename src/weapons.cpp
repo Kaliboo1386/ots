@@ -160,6 +160,7 @@ Weapon::Weapon(LuaInterface* _interface):
 	id = 0;
 	level = 0;
 	magLevel = 0;
+	reborn = 0;
 	mana = 0;
 	manaPercent = 0;
 	soul = 0;
@@ -197,6 +198,13 @@ bool Weapon::configureEvent(xmlNodePtr p)
 	 	magLevel = intValue;
 		if(magLevel > 0)
 			wieldInfo |= WIELDINFO_MAGLV;
+	}
+
+	if(readXMLInteger(p, "reborn", intValue))
+	{
+		reborn = intValue;
+		if(reborn > 0)
+			wieldInfo |= WIELDINFO_REBORN;
 	}
 
 	if(readXMLInteger(p, "mana", intValue))
@@ -250,6 +258,7 @@ bool Weapon::configureEvent(xmlNodePtr p)
 		ItemType& it = Item::items.getItemType(id);
 		it.minReqMagicLevel = getReqMagLv();
 		it.minReqLevel = getReqLevel();
+		it.minReqReborn = getReqReborn();
 
 		it.wieldInfo = wieldInfo;
 		it.vocationString = parseVocationString(vocStringVec);
@@ -314,6 +323,9 @@ int32_t Weapon::playerWeaponCheck(Player* player, Creature* target) const
 		damageModifier = (isWieldedUnproperly() ? damageModifier / 2 : 0);
 
 	if(player->getMagicLevel() < getReqMagLv())
+		damageModifier = (isWieldedUnproperly() ? damageModifier / 2 : 0);
+
+	if(player->getReborn() < getReqReborn())
 		damageModifier = (isWieldedUnproperly() ? damageModifier / 2 : 0);
 
 	return damageModifier;

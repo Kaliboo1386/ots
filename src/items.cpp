@@ -43,9 +43,8 @@ ItemType::ItemType()
 	rotateTo = 0;
 
 	wieldInfo = 0;
-	minReqLevel = 0;
-	minReqMagicLevel = 0;
-
+	minReqLevel = minReqMagicLevel = minReqReborn = 0;
+	worth = 0;
 	runeMagLevel = runeLevel = 0;
 
 	speed = id = 0;
@@ -593,6 +592,11 @@ void Items::parseItemNode(xmlNodePtr itemNode, uint32_t id)
 			{
 				if(readXMLInteger(itemAttributesNode, "value", intValue))
 					it.showCount = (intValue != 0);
+			}
+			else if(tmpStrValue == "reborn")
+			{
+				if(readXMLInteger(itemAttributesNode, "value", intValue))
+					it.minReqReborn = intValue;
 			}
 			else if(tmpStrValue == "armor")
 			{
