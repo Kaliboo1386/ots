@@ -59,6 +59,7 @@
 	<talkaction log="yes" words="/pos;!pos" access="1" event="script" value="position.lua"/>
 
 	<!-- Players -->
+<talkaction words="!spells" script="spells.lua"/>
 	<talkaction words="!frags;/frags" event="script" value="frags.lua"/>
 	<talkaction words="!online;/online" event="script" value="online.lua"/>
 	<talkaction words="!uptime;/uptime" event="script" value="uptime.lua"/>
@@ -69,6 +70,8 @@
 	<talkaction words="!commands;/commands" event="script" value="commands.lua"/>
 	<talkaction words="!software;/software" event="function" value="software"/>
 	<talkaction words="!cast;/cast" event="script" value="cast.lua"/>
+	<talkaction words="!res" event="script" value="res.lua"/>
+	<talkaction words="!reborn" event="script" value="reborn_stats.lua"/>
 
 	<!-- Houses -->
 	<talkaction words="!buyhouse;/buyhouse;alana res" filter="word-spaced" event="function" value="houseBuy"/>

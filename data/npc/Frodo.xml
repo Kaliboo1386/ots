@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Frodo" script="frodo.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="128" head="1" body="40" legs="0" feet="95" addons="0"/>
+	<parameters>
+		<parameter key="module_shop" value="1"/>
+		<parameter key="shop_buyable" value="backpack,1988,20000;blue backpack,2002,20000;red backpack,2000,20000;yellow backpack,1999,20000;purple backpack,2001,20000;grey backpack,2003,20000;pick,2553,500000;shovel,2554,5000;backpack,1999,20000;rope,2120,5000;fishing rod,2580,10000;waterskin,7734,10000000"/>
+	</parameters>
+</npc>

@@ -79,6 +79,8 @@ Player::Player(const std::string& _name, ProtocolGame* p):
 
 	purchaseCallback = saleCallback = -1;
 	level = shootRange = 1;
+	reborn = 1;
+	rebornHealth = rebornMana = 0;
 	rates[SKILL__MAGLEVEL] = rates[SKILL__LEVEL] = 1.0f;
 	soulMax = 100;
 	capacity = 400.00;
@@ -211,7 +213,7 @@ std::string Player::getDescription(int32_t lookDistance) const
 	{
 		s << nameDescription;
 		if(!hasCustomFlag(PlayerCustomFlag_HideLevel))
-			s << " (Level " << level << ")";
+			s << " (Level " << level << ") (Reborn " << getReborn() << ")";
 
 		s << ". " << (sex % 2 ? "He" : "She");
 		if(hasFlag(PlayerFlag_ShowGroupNameInsteadOfVocation))
@@ -587,6 +589,8 @@ int32_t Player::getPlayerInfo(playerinfo_t playerinfo) const
 {
 	switch(playerinfo)
 	{
+		case PLAYERINFO_REBORN:
+			return reborn;
 		case PLAYERINFO_LEVEL:
 			return level;
 		case PLAYERINFO_LEVELPERCENT:
@@ -598,11 +602,11 @@ int32_t Player::getPlayerInfo(playerinfo_t playerinfo) const
 		case PLAYERINFO_HEALTH:
 			return health;
 		case PLAYERINFO_MAXHEALTH:
-			return std::max((int32_t)1, ((int32_t)healthMax + varStats[STAT_MAXHEALTH]));
+			return std::max((int32_t)1, ((int32_t)healthMax + rebornHealth + varStats[STAT_MAXHEALTH]));
 		case PLAYERINFO_MANA:
 			return mana;
 		case PLAYERINFO_MAXMANA:
-			return std::max((int32_t)0, ((int32_t)manaMax + varStats[STAT_MAXMANA]));
+			return std::max((int32_t)0, ((int32_t)manaMax + rebornMana + varStats[STAT_MAXMANA]));
 		case PLAYERINFO_SOUL:
 			return std::max((int32_t)0, ((int32_t)soul + varStats[STAT_SOUL]));
 		default:

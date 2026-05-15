@@ -1,0 +1,14 @@
+local combat = createCombatObject()
+setCombatParam(combat, COMBAT_PARAM_TARGETCASTERORTOPMOST, true)
+setCombatParam(combat, COMBAT_PARAM_EFFECT, CONST_ME_MAGIC_RED)
+
+local condition = createConditionObject(CONDITION_PARALYZE)
+setConditionParam(condition, CONDITION_PARAM_TICKS, 20000)
+setConditionFormula(condition, -1, 40, -1, 40) 
+setCombatCondition(combat, condition)
+
+function onCastSpell(cid, var)
+if not isInArea(getCreaturePosition(cid), {x = 2588 , y = 2100 , z = 6}, {x = 2700, y = 2412 , z = 7}) then
+ return doCombat(cid, combat, var)
+end
+end

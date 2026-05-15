@@ -1463,6 +1463,15 @@ void LuaInterface::registerFunctions()
 	//getPlayerLevel(cid)
 	lua_register(m_luaState, "getPlayerLevel", LuaInterface::luaGetPlayerLevel);
 
+	//getPlayerReborn(cid)
+	lua_register(m_luaState, "getPlayerReborn", LuaInterface::luaGetPlayerReborn);
+
+	//doPlayerSetReborn(cid, value)
+	lua_register(m_luaState, "doPlayerSetReborn", LuaInterface::luaDoPlayerSetReborn);
+
+	//doPlayerAddReborn(cid)
+	lua_register(m_luaState, "doPlayerAddReborn", LuaInterface::luaDoPlayerAddReborn);
+
 	//getPlayerExperience(cid)
 	lua_register(m_luaState, "getPlayerExperience", LuaInterface::luaGetPlayerExperience);
 
@@ -1835,6 +1844,14 @@ void LuaInterface::registerFunctions()
 
 	//doPlayerAddExperience(cid, amount)
 	lua_register(m_luaState, "doPlayerAddExperience", LuaInterface::luaDoPlayerAddExperience);
+
+	//doPlayerSetLevel(cid, level)
+	lua_register(m_luaState, "doPlayerSetLevel", LuaInterface::luaDoPlayerSetLevel);
+	lua_register(m_luaState, "doPlayerSetExperience", LuaInterface::luaDoPlayerSetExperience);
+	lua_register(m_luaState, "doPlayerAddRebornHealth", LuaInterface::luaDoPlayerAddRebornHealth);
+	lua_register(m_luaState, "doPlayerAddRebornMana", LuaInterface::luaDoPlayerAddRebornMana);
+	lua_register(m_luaState, "doPlayerSetRebornHealth", LuaInterface::luaDoPlayerSetRebornHealth);
+	lua_register(m_luaState, "doPlayerSetRebornMana", LuaInterface::luaDoPlayerSetRebornMana);
 
 	//doPlayerSetGuildId(cid, id)
 	lua_register(m_luaState, "doPlayerSetGuildId", LuaInterface::luaDoPlayerSetGuildId);
@@ -10894,3 +10911,200 @@ SHIFT_OPERATOR(uint32_t, ULeftShift, <<)
 SHIFT_OPERATOR(uint32_t, URightShift, >>)
 
 #undef SHIFT_OPERATOR
+
+
+int32_t LuaInterface::luaGetPlayerReborn(lua_State* L)
+{
+	//getPlayerReborn(cid)
+	uint32_t cid = (uint32_t)popNumber(L);
+	ScriptEnviroment* env = getEnv();
+	if(Player* player = env->getPlayerByUID(cid))
+	{
+		lua_pushnumber(L, player->getReborn());
+	}
+	else
+	{
+		errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int32_t LuaInterface::luaDoPlayerSetReborn(lua_State* L)
+{
+	//doPlayerSetReborn(cid, value)
+	uint32_t value = (uint32_t)popNumber(L);
+	uint32_t cid = (uint32_t)popNumber(L);
+
+	ScriptEnviroment* env = getEnv();
+	if(Player* player = env->getPlayerByUID(cid))
+	{
+		player->setReborn(value);
+		lua_pushboolean(L, true);
+	}
+	else
+	{
+		errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
+		lua_pushboolean(L, false);
+	}
+	return 1;
+}
+
+int32_t LuaInterface::luaDoPlayerAddReborn(lua_State* L)
+{
+	//doPlayerAddReborn(cid)
+	uint32_t cid = (uint32_t)popNumber(L);
+
+	ScriptEnviroment* env = getEnv();
+	if(Player* player = env->getPlayerByUID(cid))
+	{
+		player->addReborn();
+		lua_pushboolean(L, true);
+	}
+	else
+	{
+		errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
+		lua_pushboolean(L, false);
+	}
+	return 1;
+}
+
+int32_t LuaInterface::luaDoPlayerSetLevel(lua_State* L)
+{
+	//doPlayerSetLevel(cid, level)
+	uint32_t level = (uint32_t)popNumber(L);
+	uint32_t cid = (uint32_t)popNumber(L);
+
+	ScriptEnviroment* env = getEnv();
+	if(Player* player = env->getPlayerByUID(cid))
+	{
+		uint64_t exp = Player::getExpForLevel(level);
+		if(player->getExperience() > exp)
+			player->removeExperience(player->getExperience() - exp);
+		else if(player->getExperience() < exp)
+			player->addExperience(exp - player->getExperience());
+
+		player->changeHealth(player->getMaxHealth());
+		player->Creature::changeMana(player->getMaxMana());
+
+		lua_pushboolean(L, true);
+	}
+	else
+	{
+		errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
+		lua_pushboolean(L, false);
+	}
+	return 1;
+}
+
+int32_t LuaInterface::luaDoPlayerSetExperience(lua_State* L)
+{
+	//doPlayerSetExperience(cid, exp)
+	uint64_t exp = (uint64_t)popNumber(L);
+	uint32_t cid = (uint32_t)popNumber(L);
+
+	ScriptEnviroment* env = getEnv();
+	if(Player* player = env->getPlayerByUID(cid))
+	{
+		if(player->getExperience() > exp)
+			player->removeExperience(player->getExperience() - exp);
+		else if(player->getExperience() < exp)
+			player->addExperience(exp - player->getExperience());
+
+		lua_pushboolean(L, true);
+	}
+	else
+	{
+		errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
+		lua_pushboolean(L, false);
+	}
+	return 1;
+}
+
+int32_t LuaInterface::luaDoPlayerAddRebornHealth(lua_State* L)
+{
+	//doPlayerAddRebornHealth(cid, amount)
+	int32_t amount = (int32_t)popNumber(L);
+	uint32_t cid = (uint32_t)popNumber(L);
+
+	ScriptEnviroment* env = getEnv();
+	if(Player* player = env->getPlayerByUID(cid))
+	{
+		player->rebornHealth += amount;
+		player->sendStats();
+		lua_pushboolean(L, true);
+	}
+	else
+	{
+		errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
+		lua_pushboolean(L, false);
+	}
+
+	return 1;
+}
+
+int32_t LuaInterface::luaDoPlayerAddRebornMana(lua_State* L)
+{
+	//doPlayerAddRebornMana(cid, amount)
+	int32_t amount = (int32_t)popNumber(L);
+	uint32_t cid = (uint32_t)popNumber(L);
+
+	ScriptEnviroment* env = getEnv();
+	if(Player* player = env->getPlayerByUID(cid))
+	{
+		player->rebornMana += amount;
+		player->sendStats();
+		lua_pushboolean(L, true);
+	}
+	else
+	{
+		errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
+		lua_pushboolean(L, false);
+	}
+
+	return 1;
+}
+
+int32_t LuaInterface::luaDoPlayerSetRebornHealth(lua_State* L)
+{
+	//doPlayerSetRebornHealth(cid, amount)
+	int32_t amount = (int32_t)popNumber(L);
+	uint32_t cid = (uint32_t)popNumber(L);
+
+	ScriptEnviroment* env = getEnv();
+	if(Player* player = env->getPlayerByUID(cid))
+	{
+		player->rebornHealth = amount;
+		player->sendStats();
+		lua_pushboolean(L, true);
+	}
+	else
+	{
+		errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
+		lua_pushboolean(L, false);
+	}
+
+	return 1;
+}
+
+int32_t LuaInterface::luaDoPlayerSetRebornMana(lua_State* L)
+{
+	//doPlayerSetRebornMana(cid, amount)
+	int32_t amount = (int32_t)popNumber(L);
+	uint32_t cid = (uint32_t)popNumber(L);
+
+	ScriptEnviroment* env = getEnv();
+	if(Player* player = env->getPlayerByUID(cid))
+	{
+		player->rebornMana = amount;
+		player->sendStats();
+		lua_pushboolean(L, true);
+	}
+	else
+	{
+		errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
+		lua_pushboolean(L, false);
+	}
+
+	return 1;
+}

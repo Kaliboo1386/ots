@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stages>
+	<world id="0" multiplier="2.00">
+  <stage minlevel="0" maxlevel="20000" multiplier="15000" /> 
+  <stage minlevel="20001" maxlevel="70000" multiplier="5000" /> 
+  <stage minlevel="70001" maxlevel="400000" multiplier="1000" /> 
+  <stage minlevel="400001" multiplier="0" />
+	</world>
+</stages>

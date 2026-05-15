@@ -2,6 +2,9 @@
 <actions>
 	<action default="yes" event="script" value="default.lua"/>
 
+<!--Krystian -->
+	<action itemid="9004" script="Krystian/promoticket.lua" />
+
 	<!-- Quests -->
 	<action actionid="2000" event="script" value="quests/system.lua"/>
 	<action actionid="2001" event="script" value="quests/system.lua"/>

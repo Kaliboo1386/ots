@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <movements>
 	<!-- Decaying tiles -->
+<movevent type="Equip" itemid="2127" slot="ring" event="script" value="tring.lua"/>
+<movevent type="DeEquip" itemid="2127" slot="ring" event="script" value="tring.lua"/>
 	<movevent type="StepIn" itemid="293" event="script" value="decay.lua"/>
 	<movevent type="StepIn" itemid="461" event="script" value="decay.lua"/>
 

@@ -26,13 +26,34 @@
 		<vocation id="3"/>
 		<vocation id="7" showInDescription="0"/>
 	</rune>
+    <!--Runki Candy -->
+    <rune name="epic manarune" id="2283" aggressive="0" charges="1" lvl="8" maglv="10" exhaustion="700" enabled="1" allowfaruse="1" script="Runki/epic manarune.lua">
+		<vocation id="5"/>
+		<vocation id="6"/>
+		<vocation id="7"/>
+		<vocation id="8"/>
+		
+		<vocation id="9"/>
+		<vocation id="10"/>
+		<vocation id="12"/>
+		<vocation id="13"/>
+
+		
+		
+    </rune>
+<rune name="PRO UH" id="2314" allowfaruse="1" charges="1" level="100000" maglv="1" exhaustion="100" aggressive="0" needtarget="1" blocktype="solid" script="Runki/PRO UH.lua"/>
 
 	<!-- Healing Runes -->
 	<rune name="Antidote Rune" id="2266" allowfaruse="1" charges="1" lvl="15" maglv="0" exhaustion="1000" aggressive="0" needtarget="1" blocktype="solid" event="script" value="healing/antidote rune.lua"/>
 	<rune name="Intense Healing Rune" id="2265" allowfaruse="1" charges="1" lvl="15" maglv="1" exhaustion="1000" aggressive="0" needtarget="1" blocktype="solid" event="script" value="healing/intense healing rune.lua"/>
 	<rune name="Ultimate Healing Rune" id="2273" allowfaruse="1" charges="1" lvl="24" maglv="4" exhaustion="1000" aggressive="0" needtarget="1" blocktype="solid" event="script" value="healing/ultimate healing rune.lua"/>
-
 	<!-- Summon Runes -->
+    <rune name="Super SD" id="2263" charges="1" needtarget="1" maglv="10" exhaustion="1" enabled="1" allowfaruse="1" script="runes/Super SD.lua"></rune>
+    <rune name="Manarune" id="2270" aggressive="0" charges="1" needtarget="1" lvl="8" maglv="2" exhaustion="700" enabled="1" allowfaruse="1" script="runes/manarune.lua"></rune> 
+	<rune name="SUPER MR" id="2297" aggressive="0" charges="1" needtarget="1" lvl="400" maglv="10" exhaustion="700" enabled="1" allowfaruse="1" script="runes/SUPER MR.lua"></rune>
+	<rune name="HIPER MR" id="2298" aggressive="0" charges="1" needtarget="1" lvl="1000" maglv="10" exhaustion="700" enabled="1" allowfaruse="1" script="runes/HIPER MR.lua"></rune>
+    <rune name="GOD manarune" id="2299" aggressive="0" charges="1" needtarget="1" lvl="50000" maglv="10" exhaustion="700" enabled="1" allowfaruse="1" script="runes/GOD manarune.lua"></rune>
+    <rune name="PRO manarune" id="2282" aggressive="0" charges="1" needtarget="1" lvl="100000" maglv="10" exhaustion="700" enabled="1" allowfaruse="1" script="runes/PRO manarune.lua"></rune>
 	<rune name="Convince Creature" id="2290" allowfaruse="1" charges="1" lvl="16" maglv="5" exhaustion="2000" needtarget="1" blocktype="solid" event="function" value="convince"/>
 	<rune name="Animate Dead" id="2316" allowfaruse="1" charges="1" lvl="27" maglv="4" exhaustion="2000" blocktype="solid" event="script" value="summon/animate dead rune.lua"/>
 
@@ -49,7 +70,7 @@
 		<vocation id="2"/>
 		<vocation id="6" showInDescription="0"/>
 	</rune>
-
+    <rune name="GOD SD" id="2284" charges="1" needtarget="1" lvl="100000" maglv="15" exhaustion="1" enabled="1" allowfaruse="1" script="runes/GOD SD.lua"></rune>
 	<!-- Attack Spells -->
 	<instant name="Death Strike" words="exori mort" lvl="16" mana="20" prem="1" range="3" casterTargetOrDirection="1" blockwalls="1" exhaustion="2000" needlearn="0" event="script" value="attack/death strike.lua">
 		<vocation id="1"/>
@@ -326,6 +347,27 @@
 		<vocation id="4"/>
 		<vocation id="8"/>
 	</instant>
+<!-- Epic RP-->
+	<instant name="ultimate epic" words="exevo paladin epic" reborn="2" maglv="20" mana="5000" soul="0" exhaustion="1500" prem="1" enabled="1" script="SpellEpic/ultimate epic.lua">
+		<vocation id="7"/>
+		<vocation id="15" showInDescription="0"/>
+	</instant>
+<!-- Epic Ed/ms -->
+	<instant name="Love Epic" words="exevo love epic" reborn="2" maglv="10" mana="2000" soul="0" exhaustion="1500" prem="1" enabled="1" script="SpellEpic/love epic.lua">
+		<vocation id="6"/>
+		<vocation id="14"/>
+		<vocation id="5" showInDescription="0"/>
+		<vocation id="13" showInDescription="0"/>
+	</instant>
+                <!--EpicSpellsKNIGHT-->
+	<instant name="Whirlwind Super Throw" words="exori super hur" lvl="25000" mana="400" prem="1" range="5" needtarget="1" blockwalls="1" needweapon="1" exhaustion="1500" needlearn="0" script="SpellEpic/super hur.lua">
+		<vocation id="8"/>
+		<vocation id="16"/>
+	</instant>
+	<instant name="Epic Berserk" words="exori gran epic" reborn="2" lvl="1" mana="340" prem="1" needweapon="1" exhaustion="1500" needlearn="0" script="SpellEpic/epic berserk.lua">
+		<vocation id="8"/>
+        <vocation id="16"/>
+	</instant>
 
 	<!-- Party Spells -->
 	<instant name="Train Party" words="utito mas sio" lvl="32" mana="60" prem="1" aggressive="0" selftarget="1" exhaustion="1000" needlearn="0" event="script" value="party/train.lua">
@@ -560,4 +602,5 @@
 		<vocation id="3"/>
 		<vocation id="7"/>
 	</conjure>
+
 </spells>

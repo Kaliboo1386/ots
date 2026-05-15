@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quests>
+	<quest name="-|Server Information" >
+		<mission name="-CandyOTS.pl-" endvalue="99"></mission>
+		
+		<mission name="1. EXP" endvalue="99">
+			<missionstate id="0" description="0 - 20000 x15000 | 20001 - 70000 x6000 | 70001 - 400000 x2000 | Stages decreased by your reborn."/>
+		</mission>
+		<mission name="2. REBORN" endvalue="99">
+			<missionstate id="0" description="We're getting the reborn after reaching 400000 Level. Reborn is a determinant of experience of player. "/>
+		</mission>
+		<mission name="3. RAIDS" endvalue="99">
+			<missionstate id="0" description="Every day depending on time of day, you can get many items from raids. More info: "/>
+		</mission>
+		<mission name="4. EVENTS" endvalue="99">
+			<missionstate id="0" description="We have many events on UnitedOTS. More info: "/>
+		</mission>
+		<mission name="5. QUESTS" endvalue="99">
+			<missionstate id="0" description="You can find teleport to quest room in depot. We have many quests for every player."/>
+		</mission>
+		<mission name="6. ACHIEVEMENTS" endvalue="99">
+			<missionstate id="0" description="You can collect achievements. More info: "/>
+		</mission>
+		<mission name="7. CAST" endvalue="99">
+			<missionstate id="0" description="You can stream your playing. More info: "/>
+		</mission>
+		<mission name="8. FRAGS" endvalue="99">
+			<missionstate id="0" description="RS - 20 frags per day."/>
+		</mission>
+
+		
+     </quest>
+     <quest name="Soft Boots Quest" startstorageid="6132" startstoragevalue="1">
+        <mission name="Soft Boots" storageid="6132" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found soft boots."/>
+        </mission>
+    </quest>
+    <quest name="Elite Access Quest" startstorageid="8982" startstoragevalue="1">
+        <mission name="Elite Access" storageid="8982" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found elite access."/>
+        </mission>
+    </quest>
+    <quest name="Anhi 2" startstorageid="1112" startstoragevalue="1">
+	<mission name="Golden Helmet" storageid="1112" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found golden helmet."/>
+        </mission>
+        <mission name="Demon Legs" storageid="1113" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found demon legs."/>
+        </mission>
+		<mission name="Blessed Shield" storageid="1114" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found blessed shield."/>
+        </mission>
+		<mission name="The Mexcalibur" storageid="8980" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found the mexcalibur."/>
+        </mission>
+    </quest>
+    <quest name="Anhi 1" startstorageid="7731" startstoragevalue="1">
+	<mission name="Elvenhair Rope." storageid="7731" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found elvenhair rope."/>
+        </mission>
+        <mission name="Demon Armor" storageid="9000" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found demon armor."/>
+        </mission>
+	<mission name="Magic Sword" storageid="9001" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found blessed shield."/>
+        </mission>
+	<mission name="Stonecutter Axe" storageid="9002" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found stonecutter axe."/>
+        </mission>
+    </quest>
+    <quest name="Demon Helmet Quest" startstorageid="7405" startstoragevalue="1">
+	<mission name="Demon Helmet" storageid="7405" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found demon helmet."/>
+        </mission>
+        <mission name="Demon Shield" storageid="7406" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found demon shield."/>
+        </mission>
+	<mission name="Steel Boots" storageid="7407" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found steel boots."/>
+        </mission>
+    </quest>
+    <quest name="Puni Done Quest" startstorageid="3955" startstoragevalue="1">
+	<mission name="Voodoo Doll" storageid="3955" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found voodoo doll."/>
+        </mission>
+        <mission name="Puni Done" storageid="10136" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found puni done."/>
+        </mission>
+	<mission name="Candy Backpack" storageid="11241" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found candy backpack."/>
+        </mission>
+	<mission name="Knight Legi" storageid="11304" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found knight legi."/>
+        </mission>
+    </quest>
+    <quest name="Halloween Ring Quest" startstorageid="7968" startstoragevalue="1">
+        <mission name="Halloween Ring" storageid="7968" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found halloween ring."/>
+        </mission>
+    </quest>
+    <quest name="Uni/Fenix Helmet Quest" startstorageid="50010" startstoragevalue="1">
+	<mission name="Uni/Fenix Helmet" storageid="50010" startvalue="0" endvalue="1">
+            <missionstate id="1" description="You found uni/fenix helmet."/>
+        </mission>
+    </quest>
+</quests>

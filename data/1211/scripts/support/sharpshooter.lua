@@ -1,0 +1,25 @@
+local combat = createCombatObject()
+setCombatParam(combat, COMBAT_PARAM_EFFECT, CONST_ME_MAGIC_BLUE)
+setCombatParam(combat, COMBAT_PARAM_AGGRESSIVE, 0)
+
+local condition = createConditionObject(CONDITION_ATTRIBUTES)
+setConditionParam(condition, CONDITION_PARAM_TICKS, 10000)
+setConditionParam(condition, CONDITION_PARAM_SKILL_DISTANCEPERCENT, 150)
+setConditionParam(condition, CONDITION_PARAM_BUFF, true)
+setCombatCondition(combat, condition)
+
+local speed = createConditionObject(CONDITION_PARALYZE)
+setConditionParam(speed, CONDITION_PARAM_TICKS, 10000)
+setConditionFormula(speed, -0.7, 56, -0.7, 56)
+setCombatCondition(combat, speed)
+
+local exhaust = createConditionObject(CONDITION_EXHAUST)
+setConditionParam(exhaust, CONDITION_PARAM_SUBID, 2)
+setConditionParam(exhaust, CONDITION_PARAM_TICKS, 10000)
+setCombatCondition(combat, exhaust)
+
+function onCastSpell(cid, var)
+if not isInArea(getCreaturePosition(cid), {x = 2588 , y = 2100 , z = 6}, {x = 2700, y = 2412 , z = 7}) then
+ return doCombat(cid, combat, var)
+end
+end

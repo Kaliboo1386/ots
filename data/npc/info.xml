@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Info" script="default.lua" attackable="false" skull="0" emblem="0" walkinterval="5000" floorchange="false">
+	<health now="185" max="185"/>
+	<look type="334" head="103" body="83" legs="0" feet="0" addons="2" corpse="2212"/>
+	<parameters>
+		<parameter key="message_greet" value="Witaj |PLAYERNAME|. Cieszymy sie, ze wybrales nasz serwer. Jesli chcesz sie dowiedziec wiecej o CandyOTS wpisz: {help}"/>
+		<parameter key="message_farewell" value="Milej gry, |PLAYERNAME|!"/>
+		<parameter key="message_walkaway" value="CandyOTS.pl to najlepszy serwer na swiecie!"/>
+		<parameter key="module_keywords" value="1" />
+		<parameter key="keywords" value="help;start;exp;taski;bot;inne;" />
+		<parameter key="keyword_reply1" value="Jesli potrzebujesz podstawowych informacji wpisz temat ktory cie interesuje. {Start}, {taski}, {exp}, {bot}, {inne}." />
+		<parameter key="keyword_reply2" value="Zacznij expic w teleporcie 'Start,' jesli juz osiagniesz 5k lvl udaj sie do teleportu 'Questy', wez vip acces, szczegolowe info na czym szybko expic uzyskasz na forum - dzial poradniki. " />
+		<parameter key="keyword_reply3" value="Zacznij expic w teleporcie 'Start,' jesli juz osiagniesz 5k lvl udaj sie do teleportu 'Questy', wez vip acces, szczegolowe info na czym szybko expic uzyskasz na forum - dzial poradniki. " />
+		<parameter key="keyword_reply4" value="Zeby szybciej expic wykonaj taski.Otrzymasz z nich pro uha , power ringa , pro mr,jak rowniez bron dla roznych profesji. http://www.forumots.pl/index.php?/topic/7894-nowe-taski/." />
+		<parameter key="keyword_reply5" value="Na naszym serverze bot jest dozwolony." />
+		<parameter key="keyword_reply6" value="Od 10k lvl za darmo otrzymasz super mr i super uh, nie podawaj nikomu swoich passow i nie wchodz na stronki podawane przez nieznane ci osoby - moze tam byc keyloger, pamietaj wyrob r-key.
+Gby wbijesz 2 reba wykonaj qest na epic ringa i mr, bedziesz mial rowniez nowe czary." />
+	</parameters>
+		<voices>
+		<voice text="Jestes nowy? Zagadaj do mnie pomoge ci w starcie." interval2="15000" type="3" />
+		<voice text="Pamietajcie o wyrabianiu r-keyow!" interval2="15000" type="3" />
+	</voices>
+</npc>

@@ -66,7 +66,8 @@
 	<!-- Amazons -->
 	<monster name="Amazon" file="Amazons/amazon.xml"/>
 	<monster name="Valkyrie" file="Amazons/valkyrie.xml"/>
-
+<!-- 100k -->
+ <monster name="Zulfik Rex" file="100k/Zulfik Rex.xml"/>
 	<!-- Annelids -->
 	<monster name="Carrion Worm" file="Annelids/carrion worm.xml"/>
 	<monster name="Rotworm" file="Annelids/rotworm.xml"/>
@@ -546,6 +547,7 @@
 	<monster name="Troll Champion" file="Trolls/troll champion.xml"/>
 
 	<!-- Undead Humanoids -->
+	<monster name="Glut" file="Krystian/glut.xml"/>
 	<monster name="Banshee" file="Undead Humanoids/banshee.xml"/>
 	<monster name="Blightwalker" file="Undead Humanoids/blightwalker.xml"/>
 	<monster name="Crypt Shambler" file="Undead Humanoids/crypt shambler.xml"/>

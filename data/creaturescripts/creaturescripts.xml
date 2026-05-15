@@ -13,4 +13,5 @@
 	<event type="moveitem" name="MoveItem" event="script" value="houseprotect.lua"/>
 
 	<event type="extendedopcode" name="ExtendedOpcode" event="script" value="extendedopcode.lua"/>
+	<event type="advance" name="RebornSystem" event="script" value="resetadv.lua"/>
 </creaturescripts>

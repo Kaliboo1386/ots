@@ -382,7 +382,7 @@ bool IOLoginData::loadPlayer(Player* player, const std::string& name, bool preLo
 {
 	Database* db = Database::getInstance();
 	DBQuery query;
-	query << "SELECT `id`, `account_id`, `group_id`, `world_id`, `sex`, `vocation`, `experience`, `level`, "
+	query << "SELECT `id`, `account_id`, `group_id`, `world_id`, `sex`, `vocation`, `experience`, `level`, `reborn`, `reborn_health`, `reborn_mana`, "
 	<< "`maglevel`, `health`, `healthmax`, `blessings`, `mana`, `manamax`, `manaspent`, `soul`, `lookbody`, "
 	<< "`lookfeet`, `lookhead`, `looklegs`, `looktype`, `lookaddons`, `posx`, `posy`, `posz`, `cap`, "
 	<< "`lastlogin`, `lastlogout`, `lastip`, `conditions`, `skull`, `skulltime`, `guildnick`, `rank_id`, "
@@ -427,6 +427,9 @@ bool IOLoginData::loadPlayer(Player* player, const std::string& name, bool preLo
 		player->setDirection((Direction)result->getDataInt("direction"));
 
 	player->level = std::max((uint32_t)1, (uint32_t)result->getDataInt("level"));
+	player->reborn = std::max((uint32_t)1, (uint32_t)result->getDataInt("reborn"));
+	player->rebornHealth = result->getDataInt("reborn_health");
+	player->rebornMana = result->getDataInt("reborn_mana");
 	uint64_t currExpCount = Player::getExpForLevel(player->level), nextExpCount = Player::getExpForLevel(
 		player->level + 1), experience = (uint64_t)result->getDataLong("experience");
 	if(experience < currExpCount || experience > nextExpCount)
@@ -806,6 +809,9 @@ bool IOLoginData::savePlayer(Player* player, bool preSave/* = true*/, bool shall
 
 	query << ", ";
 	query << "`level` = " << std::max((uint32_t)1, player->getLevel()) << ", ";
+	query << "`reborn` = " << player->getReborn() << ", ";
+	query << "`reborn_health` = " << player->rebornHealth << ", ";
+	query << "`reborn_mana` = " << player->rebornMana << ", ";
 	query << "`group_id` = " << player->groupId << ", ";
 	query << "`health` = " << player->health << ", ";
 	query << "`healthmax` = " << player->healthMax << ", ";

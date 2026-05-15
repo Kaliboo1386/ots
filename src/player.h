@@ -82,6 +82,7 @@ enum skillsid_t
 
 enum playerinfo_t
 {
+	PLAYERINFO_REBORN,
 	PLAYERINFO_LEVEL,
 	PLAYERINFO_LEVELPERCENT,
 	PLAYERINFO_HEALTH,
@@ -431,6 +432,23 @@ class Player : public Creature, public Cylinder
 		uint16_t getGhostAccess() const {return group ? group->getGhostAccess() : 0;}
 
 		uint32_t getLevel() const {return level;}
+		
+		uint32_t getReborn() const {
+			if (reborn < 1) {
+				return 1;
+			}
+			return reborn;
+		}
+
+		void setReborn(uint32_t value) {
+			reborn = value;
+			sendStats();
+		}
+
+		void addReborn() {
+			reborn += 1;
+			sendStats();
+		}
 		uint64_t getExperience() const {return experience;}
 		uint32_t getMagicLevel() const {return getPlayerInfo(PLAYERINFO_MAGICLEVEL);}
 		uint64_t getSpentMana() const {return manaSpent;}
@@ -1170,6 +1188,8 @@ class Player : public Creature, public Cylinder
 		uint32_t accountId;
 		uint32_t lastIP;
 		uint32_t level;
+		uint32_t reborn;
+		int32_t rebornHealth, rebornMana;
 		uint32_t levelPercent;
 		uint32_t magLevel;
 		uint32_t magLevelPercent;

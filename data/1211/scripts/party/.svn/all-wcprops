@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/forgottenserver/!svn/ver/73/tags/0.3.5pl1/data/spells/scripts/party
+END
+enchant.lua
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/forgottenserver/!svn/ver/73/tags/0.3.5pl1/data/spells/scripts/party/enchant.lua
+END
+protect.lua
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/forgottenserver/!svn/ver/73/tags/0.3.5pl1/data/spells/scripts/party/protect.lua
+END
+heal.lua
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/forgottenserver/!svn/ver/73/tags/0.3.5pl1/data/spells/scripts/party/heal.lua
+END
+train.lua
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/forgottenserver/!svn/ver/73/tags/0.3.5pl1/data/spells/scripts/party/train.lua
+END

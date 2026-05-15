@@ -1,15 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <quests>
-	<quest name="Example Quest I" startstorageid="30031" startstoragevalue="1">
-		<mission name="The head of Kiper" storageid="1001" startvalue="1" endvalue="3">
-			<missionstate id="1" description="Kill Kiper!"/>
-			<missionstate id="2" description="Give his head to Talaturen!"/>
-			<missionstate id="3" description="Take the medal you got from Talaturen to Ruly!"/>
+	<quest name="Prolog" startstorageid="2001" startstoragevalue="1">
+		<mission name="6. Kill Monsters" storageid="3101" startvalue="0" endvalue="2">
+			<missionstate id="1" description="Kill 50000 monsters to end mission, you killed |STORAGE:2101| monsters! Reward: 300gp, 5000exp."/>
+			<missionstate id="2" description="[END]"/>
 		</mission>
-		<mission name="Ruly's Revenge" storageid="30031" startvalue="4" endvalue="6">
-			<missionstate id="4" description="You received a document with instructions from Ruly, follow them."/>
-			<missionstate id="5" description="Go back to Ruly and tell him that you followed his instructions to the end."/>
-			<missionstate id="6" description="You got a reward from Ruly, he was very thankful with that you helped him to take his revenge."/>
-		</mission>
+		<mission name="3. Chicken Feathers" storageid="3102" startvalue="0" endvalue="2">
+			<missionstate id="1" description="Get 800 chicken fathers, now you have |STORAGE:2102|. Reward: 150gp, 1000exp."/>
+			<missionstate id="2" description="[END]"/>
+ 		</mission>
+		<mission name="2. Meat eat" storageid="3103" startvalue="0" endvalue="2">
+			<missionstate id="1" description="Eat 1500 meat, you eat |STORAGE:2103|. Reward: 75hp."/>
+			<missionstate id="2" description="[END]"/>
+ 		</mission>
+		<mission name="4. Wolf Paw" storageid="3104" startvalue="0" endvalue="2">
+			<missionstate id="1" description="Get 600 Wolf Paw [|STORAGE:2104|/50]. Reward: 75hp."/>
+			<missionstate id="2" description="[END]"/>
+ 		</mission>
+		<mission name="5. 20Lvl" storageid="3105" startvalue="0" endvalue="2">
+			<missionstate id="1" description="Get 100k level. Level: |STORAGE:2105|. Reward: 75hp."/>
+			<missionstate id="2" description="[END]"/>
+ 		</mission>
+		<mission name="1. First Kills" storageid="3106" startvalue="0" endvalue="2">
+			<missionstate id="1" description="Kill Elf Boss[|STORAGE:2106|/8000]. Reward: 30gp."/>
+			<missionstate id="2" description="[END]"/>
+ 		</mission>
+	</quest>
+	<quest name="Chapter I" startstorageid="2002" startstoragevalue="1">
+	<mission name="Kill Rats" storageid="3201" startvalue="0" endvalue="2">
+			<missionstate id="1" description="Kill 8000 elf boss to end mission, you killed |STORAGE:2201| monsters! Reward: 300gp, 500exp."/>
+			<missionstate id="2" description="[END]"/>
+	</mission>
+	<mission name="Eat Ham" storageid="3202" startvalue="0" endvalue="2">
+			<missionstate id="1" description="Eat 1500 ham, you eat |STORAGE:2202|. Reward: 15hp."/>
+			<missionstate id="2" description="[END]"/>
+	</mission>
 	</quest>
 </quests>

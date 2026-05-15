@@ -338,6 +338,16 @@ class LuaInterface
 
 		static int32_t luaDoPlayerSetMagicLevel(lua_State* L);
 		static int32_t luaDoPlayerSetSkillLevel(lua_State* L);
+		static int32_t luaGetPlayerReborn(lua_State* L);
+		static int32_t luaDoPlayerSetReborn(lua_State* L);
+		static int32_t luaDoPlayerAddReborn(lua_State* L);
+
+		static int32_t luaDoPlayerSetLevel(lua_State* L);
+		static int32_t luaDoPlayerSetExperience(lua_State* L);
+		static int32_t luaDoPlayerAddRebornHealth(lua_State* L);
+		static int32_t luaDoPlayerAddRebornMana(lua_State* L);
+		static int32_t luaDoPlayerSetRebornHealth(lua_State* L);
+		static int32_t luaDoPlayerSetRebornMana(lua_State* L);
 		
 		static int32_t luaDoRemoveItem(lua_State* L);
 		static int32_t luaDoPlayerFeed(lua_State* L);

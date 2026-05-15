@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <stages>
 	<world id="0" multiplier="1">
-		<stage minlevel="1" maxlevel="8" multiplier="7"/>
-		<stage minlevel="9" maxlevel="20" multiplier="6"/>
-		<stage minlevel="21" maxlevel="50" multiplier="5"/>
-		<stage minlevel="51" maxlevel="100" multiplier="4"/>
-		<stage minlevel="101" multiplier="5"/>
+	    <stage minlevel="1" maxlevel="1000" multiplier="99999" /> 
+	    <stage minlevel="1001" maxlevel="5000" multiplier="6666" /> 
+	    <stage minlevel="5001" maxlevel="10000" multiplier="4444" /> 
+	    <stage minlevel="10001" maxlevel="20000" multiplier="3333" /> 
+	    <stage minlevel="20001" maxlevel="30000" multiplier="1111" /> 
+	    <stage minlevel="30001" maxlevel="50000" multiplier="999" />
+            <stage minlevel="50001" maxlevel="75000" multiplier="500" />
+            <stage minlevel="75001" maxlevel="100000" multiplier="300" />
+	     <stage minlevel="100001" maxlevel="200000" multiplier="200" />
+            <stage minlevel="200001" multiplier="100" />
 	</world>
 </stages>
